@@ -4,7 +4,11 @@ import pandas as pd
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Dict, Any
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
+key=os.getenv("finance_server")
 # Create the MCP server
 mcp = FastMCP("AlphaVantageTrader", dependencies=["requests", "pandas", "tabulate"])
 
