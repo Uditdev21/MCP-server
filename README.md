@@ -20,11 +20,6 @@ install uv package manager
 ```sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
-
-```sh
-uv add -r 'requirements.txt'
-```
-
 ## Setup
 1. Clone this repository:
    ```sh
