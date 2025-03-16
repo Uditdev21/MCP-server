@@ -61,6 +61,11 @@ def clean_repo_data(data):
 def search_users(username: str):
     """
     Search for GitHub users (returns minimal data).
+    Args:
+      username: name of the github profile to be searched
+    
+    return:
+        list of the data from the git hub api
     """
     data = make_request(f"/search/users?q={username}&per_page=5")
     return [{"username": user["login"], "id": user["id"]} for user in data.get("items", [])]
@@ -69,6 +74,12 @@ def search_users(username: str):
 def get_user_details(username: str):
     """
     Fetch details of a GitHub user (returns minimal data).
+
+    Args:
+      username: name of the github profile to be searched
+    
+    return:
+        list of the data from the git hub api
     """
     return clean_user_data(make_request(f"/users/{username}"))
 
@@ -76,6 +87,11 @@ def get_user_details(username: str):
 def search_repositories(repo_name: str):
     """
     Search for repositories on GitHub (returns minimal data).
+    Args:
+      repo_name: name of the github repository to be searched
+    
+    return:
+        list of the data from the git hub api
     """
     data = make_request(f"/search/repositories?q={repo_name}&per_page=5")
     return [clean_repo_data(repo) for repo in data.get("items", [])]
@@ -84,6 +100,11 @@ def search_repositories(repo_name: str):
 def get_repository_details(owner: str, repo: str):
     """
     Get details of a GitHub repository (returns minimal data).
+    Args:
+      owner: name of the github repository owner to be searched
+    
+    return:
+        Dictonary of the data from the git hub api
     """
     return clean_repo_data(make_request(f"/repos/{owner}/{repo}"))
 
@@ -91,6 +112,11 @@ def get_repository_details(owner: str, repo: str):
 def get_user_repos(username: str):
     """
     Fetch public repositories of a user (returns minimal data).
+    Args:
+      username: name of the github profile to be searched
+    
+    return:
+        list of the data from the git hub api
     """
     data = make_request(f"/users/{username}/repos?per_page=5")
     return [clean_repo_data(repo) for repo in data]
@@ -99,6 +125,12 @@ def get_user_repos(username: str):
 def github_user_summary(username: str):
     """
     Generate a structured summary of a GitHub user including user details and top repositories.
+    
+    Args:
+      username: name of the github profile to be searched
+    
+    return:
+        list of the data from the git hub api
     """
     return {
         "user_info": get_user_details(username),
