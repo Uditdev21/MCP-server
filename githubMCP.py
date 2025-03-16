@@ -125,7 +125,7 @@ def get_user_repos(username: str):
 def github_user_summary(username: str):
     """
     Generate a structured summary of a GitHub user including user details and top repositories.
-    
+
     Args:
       username: name of the github profile to be searched
     
@@ -136,11 +136,3 @@ def github_user_summary(username: str):
         "user_info": get_user_details(username),
         "top_repositories": get_user_repos(username)
     }
-
-# Example Usage (Uncomment to Test)
-# print(search_users("torvalds"))
-# print(get_user_details("torvalds"))
-# print(search_repositories("fastapi"))
-# print(get_repository_details("tiangolo", "fastapi"))
-# print(get_user_repos("torvalds"))
-# print(github_user_summary("torvalds"))
